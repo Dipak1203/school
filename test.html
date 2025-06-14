@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adarsha Model Secondary School - Excellence in Education</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.95) 0%, rgba(118, 75, 162, 0.95) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        .nav-menu a:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.8) 0%, rgba(118, 75, 162, 0.8) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+            color: white;
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #667eea;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #667eea;
+            transform: translateY(-3px);
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 0;
+            background: url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+            position: relative;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(248, 249, 250, 0.95);
+            z-index: 1;
+        }
+
+        .about .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h3 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .about-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .about-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Programs Section */
+        .programs {
+            padding: 5rem 0;
+            background: url('https://images.unsplash.com/photo-1497486751825-1233686d5d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+            position: relative;
+        }
+
+        .programs::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.95);
+            z-index: 1;
+        }
+
+        .programs .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .program-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 20px;
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .program-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transform: translate(30px, -30px);
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 0;
+            background: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2022&q=80') center/cover no-repeat;
+            color: white;
+            position: relative;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.85) 0%, rgba(118, 75, 162, 0.85) 100%);
+            z-index: 1;
+        }
+
+        .contact .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+            color: white;
+            padding: 3rem 0 1rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(44, 62, 80, 0.9);
+            z-index: 1;
+        }
+
+        .footer .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: #ecf0f1;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #bdc3c7;
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #34495e;
+            padding-top: 1rem;
+            margin-top: 2rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section-title h3 {
+                font-size: 2rem;
+            }
+
+            .about-grid,
+            .programs-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .logo h1 {
+                font-size: 1.2rem;
+            }
+
+            .about-card,
+            .program-card,
+            .contact-card {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-icon">🎓</div>
+                <div>
+                    <h1>Adarsha Model Secondary School</h1>
+                </div>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#programs">Programs</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="mobile-menu-btn">☰</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h2>Excellence in Education</h2>
+            <p>Nurturing young minds for a brighter future in the heart of Dang, Nepal</p>
+            <div class="cta-buttons">
+                <a href="#about" class="btn btn-primary">Learn More</a>
+                <a href="#contact" class="btn btn-secondary">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h3>About Our School</h3>
+                <p>Adarsha Model Secondary School is committed to providing quality education and fostering holistic development of our students in Deukhuri, Dang.</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="card-icon">📚</div>
+                    <h4>Quality Education</h4>
+                    <p>We provide comprehensive education following the national curriculum with modern teaching methodologies and experienced faculty members.</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon">🌟</div>
+                    <h4>Holistic Development</h4>
+                    <p>Our approach focuses on academic excellence while nurturing creativity, leadership skills, and moral values in every student.</p>
+                </div>
+                <div class="about-card">
+                    <div class="card-icon">🏆</div>
+                    <h4>Achievement Focus</h4>
+                    <p>We encourage students to excel in academics, sports, and extracurricular activities, preparing them for future success.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programs" class="programs">
+        <div class="container">
+            <div class="section-title">
+                <h3>Our Programs</h3>
+                <p>Comprehensive educational programs designed to meet diverse learning needs</p>
+            </div>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <h4>Primary Education</h4>
+                    <p>Classes 1-5</p>
+                    <p>Foundation building with focus on basic literacy, numeracy, and character development through interactive learning methods.</p>
+                </div>
+                <div class="program-card">
+                    <h4>Lower Secondary</h4>
+                    <p>Classes 6-8</p>
+                    <p>Comprehensive curriculum covering core subjects with introduction to practical skills and technology integration.</p>
+                </div>
+                <div class="program-card">
+                    <h4>Secondary Education</h4>
+                    <p>Classes 9-10</p>
+                    <p>SEE preparation with rigorous academic training, career guidance, and personality development programs.</p>
+                </div>
+                <div class="program-card">
+                    <h4>Extracurricular Activities</h4>
+                    <p>Sports, Arts & Culture</p>
+                    <p>Various clubs, sports teams, cultural programs, and competitions to develop well-rounded personalities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h3>Contact Us</h3>
+                <p>Get in touch with us for admissions, inquiries, or any information about our school</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <h4>Address</h4>
+                    <p>Rapti-2 Deukhuri<br>Dang, Nepal</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">📞</div>
+                    <h4>Phone</h4>
+                    <p>981-2814621</p>
+                    <p>Call us for admissions and inquiries</p>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon">🕒</div>
+                    <h4>School Hours</h4>
+                    <p>Sunday - Friday<br>10:00 AM - 4:00 PM</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Adarsha Model Secondary School</h4>
+                    <p>Committed to excellence in education and holistic development of students in Dang, Nepal.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <a href="#home">Home</a>
+                    <a href="#about">About Us</a>
+                    <a href="#programs">Programs</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p>📍 Rapti-2 Deukhuri, Dang</p>
+                    <p>📞 981-2814621</p>
+                    <p>🕒 Sun-Fri: 10:00 AM - 4:00 PM</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Adarsha Model Secondary School. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple mobile menu toggle (basic functionality)
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            const navMenu = document.querySelector('.nav-menu');
+            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(102, 126, 234, 0.95)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, rgba(102, 126, 234, 0.95) 0%, rgba(118, 75, 162, 0.95) 100%)';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections
+        document.querySelectorAll('.about-card, .program-card, .contact-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
